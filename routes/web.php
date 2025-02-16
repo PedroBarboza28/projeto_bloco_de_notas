@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/main', [MainController::class, 'index']);
+Route::get(uri: '/main/{value}', [MainController::class, 'index']);
 
 
 

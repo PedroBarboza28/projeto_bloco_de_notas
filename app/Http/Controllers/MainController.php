@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index($value)
     {
-        return view("main");
+        return view("main", ["value"=> $value]);
+        // return view("main")->with("nome", $value);
+        // return view("main")->with("apelido", $value);
+
     }
 }

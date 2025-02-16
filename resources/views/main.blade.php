@@ -14,6 +14,8 @@
     <div class="text-center text-white p-10 bg-opacity-75 bg-black rounded-lg shadow-lg">
         <h1 class="text-4xl font-bold mb-4">Welcome to Blade</h1>
         <p class="text-xl">Bem vindo ao Blade!</p>
+        <hr>
+        <h3>O valor é: <?= $value ?></h3>
     </div>
 
 </body>
