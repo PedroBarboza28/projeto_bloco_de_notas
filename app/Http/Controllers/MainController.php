@@ -9,8 +9,7 @@ class MainController extends Controller
     public function index($value)
     {
         return view("main", ["value"=> $value]);
-        // return view("main")->with("nome", $value);
-        // return view("main")->with("apelido", $value);
+     
 
     }
 }
