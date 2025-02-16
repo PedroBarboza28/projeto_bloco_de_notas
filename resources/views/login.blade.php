@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- form -->
-                <form action="{{ route('login') }}" method="POST">
+                <form action="/loginSubmit" method="POST">
                     @csrf  <!-- Adiciona o token CSRF automaticamente -->
                     <div class="mb-3">
                         <label for="text_username" class="form-label">Username</label>
