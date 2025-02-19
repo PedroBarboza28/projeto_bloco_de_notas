@@ -35,11 +35,47 @@ class AuthController extends Controller
          $username = $request->input('text_username');
          $password = $request->input('text_password');
 
-         //obtém todos os usuários do banco de dados
-    $userModel = new User();
-    $users = $userModel::all()->toArray();
-    echo '<pre>'; // formata o array
-    print_r($users); // busca os dados da trabela e imprime na tela
+         $user = User::where('username', $username)
+         ->where('deleted_at', null)
+         ->first();
+
+         if(!$user) {
+            return
+            redirect()
+            ->back()
+            ->withInput()
+            ->with('loginError', 'Usuário ou senha inválidos');
+         }
+
+         // check if password is correct
+         //password_veryfy é uma função nativa do php que compara as senhas inserida pelo o usuário com
+         // a senha armazenada no banco
+         if(!password_verify($password, $user->password)) {
+            return
+            redirect()
+            ->back()
+            ->withInput()
+            ->with('loginError', 'senha inválida');
+         }
+
+         //update last login
+         $user->last_login = date('Y-m-d H:i:s');
+         $user->save();
+
+         // login user
+         session([
+            'user ' => [
+            'id' => $user->id,
+            'username' => $user->username]
+        ]);
+
+         echo 'Login realizado com sucesso'; // formata o array
+
+    //      //obtém todos os usuários do banco de dados
+    // $userModel = new User();
+    // $users = $userModel::all()->toArray();
+    // echo '<pre>'; // formata o array
+    // print_r($users); // busca os dados da trabela e imprime na tela
 
     }
 
