@@ -1,22 +1,47 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+# Ignorar arquivos de configuração sensíveis
+.env
 .env.backup
 .env.production
-.phpactor.json
+.env.example
+
+# Ignorar dependências do Node.js e PHP
+node_modules/
+vendor/
+
+# Ignorar arquivos de cache e logs do Laravel
+storage/*.key
+storage/pail
+storage/logs/
+storage/framework/
+storage/app/public/
+
+# Ignorar arquivos do PHPUnit
 .phpunit.result.cache
+.phpunit.cache
+
+# Ignorar IDEs e ferramentas de desenvolvimento
+.fleet/
+.idea/
+.vscode/
+.zed/
+.nova/
+
+# Ignorar arquivos de configuração do Laravel Sail e Homestead
 Homestead.json
 Homestead.yaml
+
+# Ignorar arquivos específicos do frontend e build tools
 npm-debug.log
 yarn-error.log
-/auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
+composer.lock
+package-lock.json
+phpunit.xml
+postcss.config.js
+tailwind.config.js
+vite.config.js
+
+# Ignorar arquivos gerados automaticamente
+public/build/
+public/hot/
+public/storage/
+artisan
