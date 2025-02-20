@@ -69,7 +69,8 @@ class AuthController extends Controller
             'username' => $user->username]
         ]);
 
-         echo 'Login realizado com sucesso'; // formata o array
+        // rederect to home
+        return redirect()->to('/');
 
     //      //obtém todos os usuários do banco de dados
     // $userModel = new User();
@@ -87,4 +88,3 @@ class AuthController extends Controller
         return redirect()->to('/login');
     }
 }
- 

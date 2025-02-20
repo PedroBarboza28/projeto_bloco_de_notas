@@ -7,7 +7,8 @@ class MainController extends Controller
 {
     public function index()
     {
-        echo "Estou dentro da aplicação";
+        //load user routes
+        return view('home');
     }
 
     public function newnote(){
