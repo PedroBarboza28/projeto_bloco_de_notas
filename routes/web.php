@@ -18,8 +18,8 @@ Route::post("/loginSubmit", [AuthController::class, "loginSubmit"]);
 // auth routes - user logged
 Route::middleware([checkIsLogged::class])->group(function () {
 
-    Route::get("/", [MainController::class, "index"]);
-    Route::get("/newnote", [MainController::class, "newnote"]);
+    Route::get("/", [MainController::class, "index"])->name('home');
+    Route::get("/newnote", [MainController::class, "newnote"])->name('new');
     Route::get("/logout", [AuthController::class, "logout"])->name('logout');
 
 });
