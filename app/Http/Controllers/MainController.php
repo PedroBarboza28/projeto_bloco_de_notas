@@ -24,24 +24,26 @@ class MainController extends Controller
     }
 
     public function editNote($id){
-
-        try{
-            $id = Crypt::decrypt($id);
-            echo 'Editando nota ' . $id;
-
-        } catch(DecryptException $e){
-            return redirect()->route('home');
-        }
+        $id = $this->decryptId($id);
+        echo "Editando nota  = $id";
 
     }
 
     public function deleteNote($id){
-        try{
-            $id = Crypt::decrypt($id);
-            echo 'Editando nota ' . $id;
+        $id = $this->decryptId($id);
+        echo "Deletando nota  = $id";
 
-        } catch(DecryptException $e){
-            return redirect()->route('home');
-        }
+    }
+
+    private function decryptId($id){
+    //check if $id is encrypted
+    try{
+        $id = Crypt::decrypt($id);
+
+    } catch(DecryptException $e){
+        return redirect()->route('home');
+    }
+
+    return $id;
     }
 }
