@@ -57,13 +57,19 @@ $note->save();
 
 // redirect to home
 return redirect()->route('home');
+
     }
 
     public function editNote($id){
         //$id = $this->decryptId($id);
         $id = Operations::decryptId($id);
-        echo "Editando nota  = $id";
 
+        //load note
+
+        $note = Note::find($id);
+
+        //show edit note view
+        return view('edit_note', ['note' => $note]);
     }
 
     public function deleteNote($id){
