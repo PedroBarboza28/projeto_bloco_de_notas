@@ -70,7 +70,7 @@ class AuthController extends Controller
         ]);
 
         // rederect to home
-        return redirect()->to('/');
+        return redirect()->to('/home');
 
     //      //obtém todos os usuários do banco de dados
     // $userModel = new User();
