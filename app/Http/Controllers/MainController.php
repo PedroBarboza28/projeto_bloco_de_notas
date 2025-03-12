@@ -78,7 +78,7 @@ return redirect()->route('home');
         $request->validate([
             'text_title' => 'required|min:3|max:200',
             'text_note' => 'required|min:3|max:3000',
-         ],
+        ],
          // error messages
         [
             'text_title.required' => 'O título é obrigatório',
@@ -88,14 +88,13 @@ return redirect()->route('home');
             'text_note.required' => 'A nota é obrigatória',
             'text_note.min' => 'A nota deve ter pelo menos :min caracteres',
             'text_note.max' => 'A nota deve ter no máximo :max caracteres',
-         ]
+            ]
         );
 
         // check if note_id exists
         if($request->note_id == null){
             return redirect()->to('home');
         }
-
         // decrypt note_id
         $id = Operations::decryptId($request->note_id);
 
@@ -108,7 +107,7 @@ return redirect()->route('home');
         $note->save();
 
         // redirect home
-
+    
         return redirect()->route('home')->with('success', 'Nota atualizada com sucesso!');
 
     }
