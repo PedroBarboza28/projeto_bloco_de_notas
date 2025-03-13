@@ -64,6 +64,9 @@ return redirect()->route('home');
         //$id = $this->decryptId($id);
         $id = Operations::decryptId($id);
 
+        if($id == null){
+            return redirect()->route('home');
+        }
         //load note
 
         $note = Note::find($id);
@@ -114,6 +117,11 @@ return redirect()->route('home');
 
    public function deleteNote($id){
     $id = Operations::decryptId($id);
+
+    if($id == null){
+        return redirect()->route('home');
+    }
+
     $note = Note::find($id);
 
     if (!$note) {
@@ -128,6 +136,11 @@ public function deleteNoteConfirm($id){
 
     //check if $id encrypted
     $id = Operations::decryptId($id);
+
+    if($id == null){
+        return redirect()->route('home');
+    }
+    
     // load note
     $note = Note::find($id);
     // 1. hard delete
